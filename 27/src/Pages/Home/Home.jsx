@@ -2,7 +2,7 @@ import React from "react";
 import Sort from "./Sort";
 import { STORE_URL } from "../../services/api";
 import { deleteById } from "../../services/requests";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Search from "./Search";
 
 const Home = ({ state, dispatch }) => {
@@ -210,15 +210,13 @@ const Home = ({ state, dispatch }) => {
                   </button>
                 </td>
                 <td className="px-6 py-4">
-                  <button
-                       onClick={() =>
-                        navigate("/detail", { state: { id: elem.id } })
-                      }
+                  <Link to={`/${elem.id}`}
+                     
                     type="button"
                     className="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-green-700 dark:focus:ring-green-900"
                   >
                      Detail
-                  </button>
+                  </Link>
                 </td>
               </tr>
               

@@ -1,11 +1,13 @@
 import React from 'react'
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 const Detail = ({state,dispatch}) => {
-    let navigate = useNavigate();
-    const location = useLocation();
-    const detailId = location.state.id;
-    const find = state.store.find(item => item.id === detailId);
+  const {  id } = useParams();
+    console.log(id);
+    // let navigate = useNavigate();
+    // const location = useLocation();
+    // const detailId = location.state.id;
+    const find = state.store.find(item => item.id === id);
 
   return (
     <div className="font-sans bg-white pt-9">

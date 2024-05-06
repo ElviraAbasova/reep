@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useParams} from "react-router-dom";
 import "./index.css"
 import { getAllData } from "./services/requests";
 import { useEffect, useReducer } from "react";
@@ -20,7 +20,9 @@ import UserDetail from "./Pages/Users/UserDetail";
 
 
 
+
 export default function App() {
+  const { id } = useParams();
   const [state, dispatch] = useReducer(reducer,
     {
       store: [],
@@ -66,6 +68,9 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home state = {state} dispatch={dispatch}/>} />
+          <Route path="/:id" element={<Detail state = {state} dispatch={dispatch} />} />
+
+
           <Route path="homeP" element={<HomePost/>} />
           <Route path="homeE" element={<HomeEdit state = {state} dispatch={dispatch} />} />
           <Route path="users" element={<Users state = {state} dispatch={dispatch} />} />
@@ -74,8 +79,8 @@ export default function App() {
           <Route path="dashboard" element={<Dashboard state = {state} dispatch={dispatch} />} />
           <Route path="login" element={<Login state = {state} dispatch={dispatch} />} />
           <Route path="signup" element={<SignUp state = {state} dispatch={dispatch} />} />
-          <Route path="detail" element={<Detail state = {state} dispatch={dispatch} />} />
           <Route path="userdetail" element={<UserDetail state = {state} dispatch={dispatch} />} />
+       
 
 
         </Route>
